@@ -44,12 +44,28 @@ class BOULDRNS_ROUTE extends WP_REST_Controller {
     );
 
     $query = new WP_Query( $args );
-
     $posts = $query->posts;
+    $formatted_posts = array();
+
+    foreach ($posts as $post) {
+      $temp_problem = array(
+        'problem_name' => $post->post_title,
+        'problem_grade' => get_post_meta($post->ID, 'grade', true),
+        'problem_description' => $post->post_content,
+        'problem_rating' => get_post_meta($post->ID, 'rating', true)
+      );
+
+      $temp_problem->problem_name = $post->post_title;
+      $temp_problem->problem_description = $post->post_content;
+      $temp_problem->last_modified = $post->post_modified;
+
+      array_push($formatted_posts, $temp_problem);
+
+    }
 
     // TODO: massage data & append post meta
 
-    return $posts;
+    return $formatted_posts;
   }
 
   public function get_single_problem( WP_REST_Request $request ) {
