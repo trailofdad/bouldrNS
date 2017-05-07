@@ -23,4 +23,4 @@ $area_args = array(
     'show_admin_column'     => true
 );
 
-register_taxonomy( 'Area', $problem_cpt, $area_args);
+register_taxonomy( 'area', $problem_cpt, $area_args);

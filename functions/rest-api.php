@@ -66,21 +66,22 @@ class BOULDRNS_ROUTE extends WP_REST_Controller {
 
     wp_reset_query();
 
-    $args = array('post_type' => 'bouldrns_problem',
+    $args = array(
+        'post_type' => 'bouldrns_problem',
         'tax_query' => array(
             array(
-                'taxonomy' => 'Area',
-                'field' => 'slug',
+                'taxonomy' => 'area',
+                'field' => 'term_id',
                 'terms' => $id,
             ),
         ),
      );
 
-     $posts = new WP_Query($args);
+     $query = new WP_Query($args);
 
     // TODO: massage data & append post meta
 
-    return $post;
+    return $query->posts;
   }
 
 }
