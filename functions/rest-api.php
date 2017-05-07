@@ -5,6 +5,7 @@ class BOULDRNS_ROUTE extends WP_REST_Controller {
   public function register_routes() {
     $namespace = 'bouldrns/v1';
     $base = 'problems';
+    $taxonomy = 'areas';
 
     // Get all problems
     register_rest_route( $namespace, '/' . $base,
@@ -19,6 +20,14 @@ class BOULDRNS_ROUTE extends WP_REST_Controller {
       array(
         'methods' => WP_REST_Server::READABLE,
         'callback' => array( $this, 'get_single_problem')
+      )
+    );
+
+    // Get problems from area
+    register_rest_route( $namespace, '/' . $taxonomy . '/(?P<id>[\d]+)',
+      array(
+        'methods' => WP_REST_Server::READABLE,
+        'callback' => array( $this, 'get_single_area')
       )
     );
   }
@@ -46,6 +55,28 @@ class BOULDRNS_ROUTE extends WP_REST_Controller {
   public function get_single_problem( WP_REST_Request $request ) {
     $id = $request->get_param('id');
     $post = get_post($id);
+
+    // TODO: massage data & append post meta
+
+    return $post;
+  }
+
+  public function get_single_area( WP_REST_Request $request ) {
+    $id = $request->get_param('id');
+
+    wp_reset_query();
+
+    $args = array('post_type' => 'bouldrns_problem',
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'Area',
+                'field' => 'slug',
+                'terms' => $id,
+            ),
+        ),
+     );
+
+     $posts = new WP_Query($args);
 
     // TODO: massage data & append post meta
 

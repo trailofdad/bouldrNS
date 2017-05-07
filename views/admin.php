@@ -5,7 +5,7 @@
  * This includes the header, options, and other information that should provide
  * The User Interface to the end user.
  *
- * @package    PluginName
+ * @package    BouldrNs
  * @author     TODO
  * @license    GPL-2.0+
  * @link       TODO

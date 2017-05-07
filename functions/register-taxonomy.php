@@ -2,7 +2,7 @@
 
 $problem_cpt = array('bouldrns_problem');
 
-$service_area_labels = array(
+$area_labels = array(
     'name'              => _x( 'Area', 'taxonomy general name', 'bouldrns' ),
     'singular_name'     => _x( 'Area', 'taxonomy singular name', 'bouldrns' ),
     'search_items'      => __( 'Search Areas', 'bouldrns' ),
@@ -15,3 +15,12 @@ $service_area_labels = array(
     'new_item_name'     => __( 'New Area Name', 'bouldrns' ),
     'menu_name'         => __( 'Areas', 'bouldrns' )
 );
+
+$area_args = array(
+    'hierarchical'          => true,
+    'labels'                => $area_labels,
+    'show_ui'               => true,
+    'show_admin_column'     => true
+);
+
+register_taxonomy( 'Area', $problem_cpt, $area_args);

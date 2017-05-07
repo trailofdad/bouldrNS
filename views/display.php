@@ -5,7 +5,7 @@
  * This typically includes any information, if any, that is rendered to the
  * frontend of the theme when the plugin is activated.
  *
- * @package    PluginName
+ * @package    BouldrNs
  * @subpackage views
  * @author     TODO
  * @license    GPL-2.0+
