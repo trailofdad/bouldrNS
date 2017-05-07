@@ -52,15 +52,11 @@ class BOULDRNS_ROUTE extends WP_REST_Controller {
         'problem_name' => $post->post_title,
         'problem_grade' => get_post_meta($post->ID, 'grade', true),
         'problem_description' => $post->post_content,
-        'problem_rating' => get_post_meta($post->ID, 'rating', true)
+        'problem_rating' => get_post_meta($post->ID, 'rating', true),
+        'last_modified' => $post->post_modified
       );
 
-      $temp_problem->problem_name = $post->post_title;
-      $temp_problem->problem_description = $post->post_content;
-      $temp_problem->last_modified = $post->post_modified;
-
       array_push($formatted_posts, $temp_problem);
-
     }
 
     // TODO: massage data & append post meta
