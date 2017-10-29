@@ -35,20 +35,20 @@ $args = array(
   'register_meta_box_cb' => array( 'add_grade_metabox', 'add_rating_metabox' )
 );
 
-register_post_type( 'bouldrns_problem', $args );
+register_post_type( 'gaston_problem', $args );
 
 function add_grade_metabox() {
-  add_meta_box( 'bouldrns-grade', __( 'Grade', 'textdomain' ), 'boulsrns_grade_meta', 'bouldrns_problem' );
+  add_meta_box( 'gaston-grade', __( 'Grade', 'textdomain' ), 'gaston_grade_meta', 'gaston_problem' );
 }
 
 function add_rating_metabox() {
-  add_meta_box( 'bouldrns-rating', __( 'Rating', 'textdomain' ), 'bouldrns_rating_meta', 'bouldrns_problem' );
+  add_meta_box( 'gaston-rating', __( 'Rating', 'textdomain' ), 'gaston_rating_meta', 'gaston_problem' );
 }
 
 add_action( 'add_meta_boxes', 'add_grade_metabox' );
 add_action( 'add_meta_boxes', 'add_rating_metabox' );
 
-function boulsrns_grade_meta() {
+function gaston_grade_meta() {
   global $post;
 
   //Nonce to verify the data
@@ -66,7 +66,7 @@ function boulsrns_grade_meta() {
   $grade . '" class = "property-grade" ';
 }
 
-function bouldrns_rating_meta() {
+function gaston_rating_meta() {
   global $post;
 
   //Nonce to verify the data
@@ -84,10 +84,10 @@ function bouldrns_rating_meta() {
   $rating . '" class = "property-rating" ';
 }
 
-add_action('save_post', 'bouldrns_save_rating_meta', 1, 2);
-add_action('save_post', 'bouldrns_save_grade_meta', 1, 2);
+add_action('save_post', 'gaston_save_rating_meta', 1, 2);
+add_action('save_post', 'gaston_save_grade_meta', 1, 2);
 
-function bouldrns_save_grade_meta($post_id, $post) {
+function gaston_save_grade_meta($post_id, $post) {
 
   //Verify it came from proper authorization.
   if (!wp_verify_nonce($_POST['grade_meta_nonce'], plugin_basename(__FILE__))) {
@@ -119,7 +119,7 @@ function bouldrns_save_grade_meta($post_id, $post) {
   }
 }
 
-function bouldrns_save_rating_meta($post_id, $post) {
+function gaston_save_rating_meta($post_id, $post) {
 
   //Verify it came from proper authorization.
   if (!wp_verify_nonce($_POST['rating_meta_nonce'], plugin_basename(__FILE__))) {
