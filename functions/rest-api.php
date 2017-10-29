@@ -4,26 +4,26 @@ class GASTON_ROUTE extends WP_REST_Controller {
   // Endpoints
   public function register_routes() {
     $namespace = 'gaston/v1';
-    $base = 'problems';
+    $base = 'climbs';
     $taxonomy = 'areas';
 
-    // Get all problems
+    // Get all climbs
     register_rest_route( $namespace, '/' . $base,
       array(
         'methods' => WP_REST_Server::READABLE,
-        'callback' => array( $this, 'get_problems')
+        'callback' => array( $this, 'get_climbs')
       )
     );
 
-    // Get single Problem
+    // Get single climb
     register_rest_route( $namespace, '/' . $base . '/(?P<id>\d+)',
       array(
         'methods' => WP_REST_Server::READABLE,
-        'callback' => array( $this, 'get_single_problem')
+        'callback' => array( $this, 'get_single_climb')
       )
     );
 
-    // Get problems from area
+    // Get climbs from area
     register_rest_route( $namespace, '/' . $taxonomy . '/(?P<id>[\d]+)',
       array(
         'methods' => WP_REST_Server::READABLE,
@@ -33,10 +33,10 @@ class GASTON_ROUTE extends WP_REST_Controller {
   }
   // Endpoints
 
-  // Get all Problems
-  public function get_problems() {
+  // Get all climbs
+  public function get_climbs() {
     $args = array (
-      'post_type' => array( 'gaston_problem' ),
+      'post_type' => array( 'gaston_climb' ),
       'posts_per_page' => -1,
       'order' => 'ASC',
       'orderby' => 'title',
@@ -48,15 +48,15 @@ class GASTON_ROUTE extends WP_REST_Controller {
     $formatted_posts = array();
 
     foreach ($posts as $post) {
-      $temp_problem = array(
-        'problem_name' => $post->post_title,
-        'problem_grade' => get_post_meta($post->ID, 'grade', true),
-        'problem_description' => $post->post_content,
-        'problem_rating' => get_post_meta($post->ID, 'rating', true),
+      $temp_climb = array(
+        'climb_name' => $post->post_title,
+        'climb_grade' => get_post_meta($post->ID, 'grade', true),
+        'climb_description' => $post->post_content,
+        'climb_rating' => get_post_meta($post->ID, 'rating', true),
         'last_modified' => $post->post_modified
       );
 
-      array_push($formatted_posts, $temp_problem);
+      array_push($formatted_posts, $temp_climb);
     }
 
     // TODO: massage data & append post meta
@@ -64,7 +64,7 @@ class GASTON_ROUTE extends WP_REST_Controller {
     return $formatted_posts;
   }
 
-  public function get_single_problem( WP_REST_Request $request ) {
+  public function get_single_climb( WP_REST_Request $request ) {
     $id = $request->get_param('id');
     $post = get_post($id);
 
@@ -79,7 +79,7 @@ class GASTON_ROUTE extends WP_REST_Controller {
     wp_reset_query();
 
     $args = array(
-        'post_type' => 'gaston_problem',
+        'post_type' => 'gaston_climb',
         'tax_query' => array(
             array(
                 'taxonomy' => 'area',

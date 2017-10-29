@@ -2,12 +2,12 @@
 /**
  * Fired when the plugin is uninstalled.
  *
- * @package  PluginName
- * @author   TODO
+ * @package  gaston
+ * @author   Christian Hapgood <christian.hapgood@gmail.com>
  * @license  GPL-2.0+
  * @link     TODO
  * @version  1.0.0
- * @since    1.0.0
+ * @since    0.0.2
  */
 
 // If uninstall, not called from WordPress, then exit

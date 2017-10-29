@@ -1,29 +1,29 @@
 <?php
 
 $labels = array(
-  'name'               => 'Problems',
-  'singular_name'      => 'Problem',
-  'menu_name'          => 'Problems',
-  'name_admin_bar'     => 'Problem',
-  'add_new'            => _x('Add New', 'problem'),
-  'add_new_item'       => 'Add New Problem',
-  'new_item'           => 'New Problem',
-  'edit_item'          => 'Edit Problem',
-  'view_item'          => 'View Problem',
-  'all_items'          => 'All Problems',
-  'search_items'       => 'Search Problems',
-  'parent_item_colon'  => 'Parent Problem:',
-  'not_found'          => 'No problems found.',
-  'not_found_in_trash' => 'No problems found in Trash.'
+  'name'               => 'Climbs',
+  'singular_name'      => 'Climb',
+  'menu_name'          => 'Climbs',
+  'name_admin_bar'     => 'Climb',
+  'add_new'            => _x('Add New', 'climb'),
+  'add_new_item'       => 'Add New Climb',
+  'new_item'           => 'New Climb',
+  'edit_item'          => 'Edit Climb',
+  'view_item'          => 'View Climb',
+  'all_items'          => 'All Climbs',
+  'search_items'       => 'Search Climbs',
+  'parent_item_colon'  => 'Parent Climb:',
+  'not_found'          => 'No climbs found.',
+  'not_found_in_trash' => 'No climbs found in Trash.'
 );
 
 $args = array(
   'labels'             => $labels,
-  'description'        => 'Holds information on problems',
+  'description'        => 'Holds information on climbs',
   'public'             => true,
   'show_ui'            => true,
   'query_var'          => true,
-  'rewrite'            => array( 'slug' => 'problem' ),
+  'rewrite'            => array( 'slug' => 'climb' ),
   'capability_type'    => 'post',
   'hierarchical'       => true,
   'supports'           => array( 'title', 'editor', 'custom-fields', 'comments', 'revisions', 'thumbnail' ),
@@ -35,14 +35,14 @@ $args = array(
   'register_meta_box_cb' => array( 'add_grade_metabox', 'add_rating_metabox' )
 );
 
-register_post_type( 'gaston_problem', $args );
+register_post_type( 'gaston_climb', $args );
 
 function add_grade_metabox() {
-  add_meta_box( 'gaston-grade', __( 'Grade', 'textdomain' ), 'gaston_grade_meta', 'gaston_problem' );
+  add_meta_box( 'gaston-grade', __( 'Grade', 'textdomain' ), 'gaston_grade_meta', 'gaston_climb' );
 }
 
 function add_rating_metabox() {
-  add_meta_box( 'gaston-rating', __( 'Rating', 'textdomain' ), 'gaston_rating_meta', 'gaston_problem' );
+  add_meta_box( 'gaston-rating', __( 'Rating', 'textdomain' ), 'gaston_rating_meta', 'gaston_climb' );
 }
 
 add_action( 'add_meta_boxes', 'add_grade_metabox' );
