@@ -9,7 +9,7 @@
  * Plugin Name: gaston-api
  * Plugin URI: TODO
  * Description: A WordPress plugin for enabling a climbing area API
- * Version: 0.0.1
+ * Version: 0.0.2
  * Author: Christian Hapgood
  * Author URI: http://christianhapgood.ca
  * Author Email: christian.hapgood@gmail.com
@@ -31,7 +31,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 if ( ! defined( 'GASTON_VERSION' ) ) {
 
-	define( 'GASTON_VERSION', '0.0.1' );
+	define( 'GASTON_VERSION', '0.0.2' );
 
 }
 
