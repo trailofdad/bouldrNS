@@ -6,12 +6,12 @@ gaston is named after Gaston Rébuffat (7 May 1921, Marseille – 31 May 1985, P
 
 _wikipedia_
 
-# Set up
+### Set up
 
 * Clone to your wordpress plugin directory of choice
 * Activate!
 
-## V1 Road Map
+### V1 Road Map
 
 * Flesh out climb post data model
 * Define initial endpoints
@@ -20,6 +20,6 @@ _wikipedia_
 * Integrate ACF
 * Tag Support
 
-## V2
+### V2
 
 * Add remote authentication
