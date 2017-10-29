@@ -41,4 +41,4 @@ require_once( plugin_dir_path( __FILE__ ) . 'class-gaston.php' );
 register_activation_hook( __FILE__, array( 'gaston', 'activate' ) );
 register_deactivation_hook( __FILE__, array( 'gaston', 'deactivate' ) );
 
-gaston::get_instance();
+Gaston::get_instance();

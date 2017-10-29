@@ -5,13 +5,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * @package gaston
+ * @package Gaston
  * @author  Christian Hapgood <christian.hapgood@gmail.com>
  * @license GPL-2.0+
  * @link    TODO
  * @version 0.0.1
  */
-class gaston {
+class Gaston {
 
 	/**
 	* Refers to a single instance of this class.
