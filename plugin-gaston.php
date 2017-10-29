@@ -1,19 +1,19 @@
 <?php
 /**
- * @package BouldrNs
+ * @package gaston-api
  * @author  Christian Hapgood <christian.hapgood@gmail.com>
  * @license GPL-2.0+
  * @link    TODO
  *
  * @wordpress-plugin
- * Plugin Name: BouldrNs
+ * Plugin Name: gaston-api
  * Plugin URI: TODO
  * Description: A WordPress plugin for enabling a climbing area API
- * Version: 0.0.1
+ * Version: 0.0.2
  * Author: Christian Hapgood
  * Author URI: http://christianhapgood.ca
  * Author Email: christian.hapgood@gmail.com
- * Text Domain: bouldrns-locale
+ * Text Domain: gaston-locale
  * License: GPL-2.0+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  * Domain Path: /lang/
@@ -29,16 +29,16 @@ if ( ! defined( 'ABSPATH' ) ) {
  * easier to provide cache-busting functionality on loading stylesheets
  * and JavaScript.
  */
-if ( ! defined( 'BOULDRNS_VERSION' ) ) {
+if ( ! defined( 'GASTON_VERSION' ) ) {
 
-	define( 'BOULDRNS_VERSION', '0.0.1' );
+	define( 'GASTON_VERSION', '0.0.2' );
 
 }
 
-require_once( plugin_dir_path( __FILE__ ) . 'class-bouldrns.php' );
+require_once( plugin_dir_path( __FILE__ ) . 'class-gaston.php' );
 
 // Register hooks that are fired when the plugin is activated, deactivated, and uninstalled, respectively.
-register_activation_hook( __FILE__, array( 'BouldrNs', 'activate' ) );
-register_deactivation_hook( __FILE__, array( 'BouldrNs', 'deactivate' ) );
+register_activation_hook( __FILE__, array( 'gaston', 'activate' ) );
+register_deactivation_hook( __FILE__, array( 'gaston', 'deactivate' ) );
 
-BouldrNs::get_instance();
+Gaston::get_instance();

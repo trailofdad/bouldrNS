@@ -1,19 +1,19 @@
 <?php
 
-$problem_cpt = array('bouldrns_problem');
+$problem_cpt = array('gaston_problem');
 
 $area_labels = array(
-    'name'              => _x( 'Area', 'taxonomy general name', 'bouldrns' ),
-    'singular_name'     => _x( 'Area', 'taxonomy singular name', 'bouldrns' ),
-    'search_items'      => __( 'Search Areas', 'bouldrns' ),
-    'all_items'         => __( 'All Areas', 'bouldrns' ),
-    'parent_item'       => __( 'Parent Area', 'bouldrns' ),
-    'parent_item_colon' => __( 'Parent Area:', 'bouldrns' ),
-    'edit_item'         => __( 'Edit Area', 'bouldrns' ),
-    'update_item'       => __( 'Update Area', 'bouldrns' ),
-    'add_new_item'      => __( 'Add New Area', 'bouldrns' ),
-    'new_item_name'     => __( 'New Area Name', 'bouldrns' ),
-    'menu_name'         => __( 'Areas', 'bouldrns' )
+    'name'              => _x( 'Area', 'taxonomy general name', 'gaston' ),
+    'singular_name'     => _x( 'Area', 'taxonomy singular name', 'gaston' ),
+    'search_items'      => __( 'Search Areas', 'gaston' ),
+    'all_items'         => __( 'All Areas', 'gaston' ),
+    'parent_item'       => __( 'Parent Area', 'gaston' ),
+    'parent_item_colon' => __( 'Parent Area:', 'gaston' ),
+    'edit_item'         => __( 'Edit Area', 'gaston' ),
+    'update_item'       => __( 'Update Area', 'gaston' ),
+    'add_new_item'      => __( 'Add New Area', 'gaston' ),
+    'new_item_name'     => __( 'New Area Name', 'gaston' ),
+    'menu_name'         => __( 'Areas', 'gaston' )
 );
 
 $area_args = array(

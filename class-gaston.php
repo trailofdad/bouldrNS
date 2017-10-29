@@ -5,13 +5,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * @package BouldrNS
+ * @package Gaston
  * @author  Christian Hapgood <christian.hapgood@gmail.com>
  * @license GPL-2.0+
  * @link    TODO
  * @version 0.0.1
  */
-class BouldrNs {
+class Gaston {
 
 	/**
 	* Refers to a single instance of this class.
@@ -31,7 +31,7 @@ class BouldrNs {
 	* Creates or returns an instance of this class.
 	*
 	* @since     0.0.1
-	* @return    BouldrNs    A single instance of this class.
+	* @return    Gaston    A single instance of this class.
 	*/
 	public function get_instance() {
 
@@ -81,19 +81,19 @@ class BouldrNs {
 		 *
 		 */
 
-		add_action( 'init', array( $this, 'register_bouldrns_post_types' ) );
+		add_action( 'init', array( $this, 'register_gaston_post_types' ) );
 		add_action( 'rest_api_init', array( $this, 'initialize_rest_routes') );
 	}
 
 	// include functions
-  public function register_bouldrns_post_types() {
+  public function register_gaston_post_types() {
     include 'functions/custom-post-types.php';
     include 'functions/rest-api.php';
     include 'functions/register-taxonomy.php';
   }
 
 	public function initialize_rest_routes() {
-    $problem_controller = new BOULDRNS_ROUTE();
+    $problem_controller = new GASTON_ROUTE();
     $problem_controller->register_routes();
 	}
 
@@ -131,7 +131,7 @@ class BouldrNs {
 	 */
 	public function load_plugin_textdomain() {
 
-		$domain = 'bouldrns-locale';
+		$domain = 'gaston-locale';
 		$locale = apply_filters( 'plugin_locale', get_locale(), $domain );
 
 		load_textdomain( $domain, WP_LANG_DIR . '/' . $domain . '/' . $domain . '-' . $locale . '.mo' );
@@ -160,7 +160,7 @@ class BouldrNs {
 
 			$screen = get_current_screen();
 			if ( $screen->id == $this->plugin_screen_slug ) {
-				wp_enqueue_style( 'bouldrns-admin-styles', plugins_url( 'css/admin.css', __FILE__ ), BOULDRNS_VERSION );
+				wp_enqueue_style( 'gaston-admin-styles', plugins_url( 'css/admin.css', __FILE__ ), GASTON_VERSION );
 			}
 
 		}
@@ -188,7 +188,7 @@ class BouldrNs {
 
 			$screen = get_current_screen();
 			if ( $screen->id == $this->plugin_screen_slug ) {
-				wp_enqueue_script( 'bouldrns-admin-script', plugins_url('js/admin.js', __FILE__), array( 'jquery' ), BOULDRNS_VERSION );
+				wp_enqueue_script( 'gaston-admin-script', plugins_url('js/admin.js', __FILE__), array( 'jquery' ), GASTON_VERSION );
 			}
 
 		}
@@ -201,7 +201,7 @@ class BouldrNs {
 	 * @since    1.0.0
 	 */
 	public function register_plugin_styles() {
-		wp_enqueue_style( 'bouldrns-plugin-styles', plugins_url( 'css/display.css', __FILE__ ), BOULDRNS_VERSION );
+		wp_enqueue_style( 'gaston-plugin-styles', plugins_url( 'css/display.css', __FILE__ ), GASTON_VERSION );
 	}
 
 	/**
@@ -210,7 +210,7 @@ class BouldrNs {
 	 * @since    1.0.0
 	 */
 	public function register_plugin_scripts() {
-		wp_enqueue_script( 'bouldrns-plugin-script', plugins_url( 'js/display.js', __FILE__ ), array( 'jquery' ), BOULDRNS_VERSION );
+		wp_enqueue_script( 'gaston-plugin-script', plugins_url( 'js/display.js', __FILE__ ), array( 'jquery' ), GASTON_VERSION );
 	}
 
 	/**
@@ -225,13 +225,13 @@ class BouldrNs {
 		 *
 		 * Change 'Page Title' to the title of your plugin admin page
 		 * Change 'Menu Text' to the text for menu item for the plugin settings page
-		 * Change 'bouldrns' to the name of your plugin
+		 * Change 'gaston' to the name of your plugin
 		 */
 		$this->plugin_screen_slug = add_plugins_page(
-			__('Page Title', 'bouldrns-locale'),
-			__('Menu Text', 'bouldrns-locale'),
+			__('Page Title', 'gaston-locale'),
+			__('Menu Text', 'gaston-locale'),
 			'read',
-			'bouldrns',
+			'gaston',
 			array( $this, 'display_plugin_admin_page' )
 		);
 

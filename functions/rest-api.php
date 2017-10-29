@@ -1,9 +1,9 @@
 <?php
 
-class BOULDRNS_ROUTE extends WP_REST_Controller {
+class GASTON_ROUTE extends WP_REST_Controller {
   // Endpoints
   public function register_routes() {
-    $namespace = 'bouldrns/v1';
+    $namespace = 'gaston/v1';
     $base = 'problems';
     $taxonomy = 'areas';
 
@@ -36,7 +36,7 @@ class BOULDRNS_ROUTE extends WP_REST_Controller {
   // Get all Problems
   public function get_problems() {
     $args = array (
-      'post_type' => array( 'bouldrns_problem' ),
+      'post_type' => array( 'gaston_problem' ),
       'posts_per_page' => -1,
       'order' => 'ASC',
       'orderby' => 'title',
@@ -79,7 +79,7 @@ class BOULDRNS_ROUTE extends WP_REST_Controller {
     wp_reset_query();
 
     $args = array(
-        'post_type' => 'bouldrns_problem',
+        'post_type' => 'gaston_problem',
         'tax_query' => array(
             array(
                 'taxonomy' => 'area',
