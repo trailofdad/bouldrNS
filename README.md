@@ -6,7 +6,9 @@ gaston is named after Gaston Rébuffat (7 May 1921, Marseille – 31 May 1985, P
 
 _wikipedia_
 
-* Clone to your wordpress plugin directory
+# Set up
+
+* Clone to your wordpress plugin directory of choice
 * Activate!
 
 ## V1 Road Map
