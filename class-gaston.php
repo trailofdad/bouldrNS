@@ -31,7 +31,7 @@ class Gaston {
 	* Creates or returns an instance of this class.
 	*
 	* @since     0.0.1
-	* @return    gaston    A single instance of this class.
+	* @return    Gaston    A single instance of this class.
 	*/
 	public function get_instance() {
 
