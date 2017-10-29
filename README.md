@@ -7,8 +7,8 @@ gaston is an open source WordPress plugin to enable a public climbing route API/
 
 ## V1 Road Map
 
-* Flesh out climb post data model for a climb
-* Define initial endpoints to be available
+* Flesh out climb post data model
+* Define initial endpoints
   * Endpoint for all climbs
   * Endpoint for each of the areas/subareas
 * Integrate ACF
