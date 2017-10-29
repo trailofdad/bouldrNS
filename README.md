@@ -4,7 +4,7 @@ gaston is an open source WordPress plugin to enable a public climbing route API/
 
 gaston is named after Gaston Rébuffat (7 May 1921, Marseille – 31 May 1985, Paris) was a well-known French alpinist and mountain guide. The climbing technique, to gaston, was named after him. He was a recipient of France's prestigious Chevalier de la Légion d'Honneur in 1984.
 
-- Wikipedia
+_wikipedia_
 
 * Clone to your wordpress plugin directory
 * Activate!
