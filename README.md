@@ -10,3 +10,8 @@ _wikipedia_
 
 * Clone to your wordpress plugin directory of choice
 * Activate!
+
+### Endpoints
+
+All Climbs:
+`/wp-json/gaston/v1/climbs`
