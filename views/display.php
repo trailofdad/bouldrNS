@@ -10,7 +10,7 @@
  * @author     TODO
  * @license    GPL-2.0+
  * @link       TODO
- * @version    0.0.1
+ * @version    0.0.2
  * @since      0.0.2
  */
 ?>
