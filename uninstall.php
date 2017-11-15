@@ -6,7 +6,7 @@
  * @author   Christian Hapgood <christian.hapgood@gmail.com>
  * @license  GPL-2.0+
  * @link     TODO
- * @version  1.0.0
+ * @version  0.0.2
  * @since    0.0.2
  */
 
