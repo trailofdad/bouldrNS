@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @author  Christian Hapgood <christian.hapgood@gmail.com>
  * @license GPL-2.0+
  * @link    TODO
- * @version 0.0.1
+ * @version 0.0.2
  */
 class Gaston {
 
@@ -30,7 +30,7 @@ class Gaston {
 	/**
 	* Creates or returns an instance of this class.
 	*
-	* @since     0.0.1
+	* @since     0.0.2
 	* @return    Gaston    A single instance of this class.
 	*/
 	public function get_instance() {
@@ -47,7 +47,7 @@ class Gaston {
 	/**
 	* Initializes the plugin by setting localization, filters, and administration functions.
 	*
-	* @since    1.0.0
+	* @since    0.0.2
 	*/
 	private function __construct() {
 
@@ -83,6 +83,9 @@ class Gaston {
 
 		add_action( 'init', array( $this, 'register_gaston_post_types' ) );
 		add_action( 'rest_api_init', array( $this, 'initialize_rest_routes') );
+
+		// Add plugin admin menu
+		add_action('admin_menu', array( $this, 'add_plugin_admin_menu') );
 	}
 
 	// include functions
@@ -105,8 +108,8 @@ class Gaston {
 	 public static function activate( $network_wide ) {
 		// TODO: Define activation functionality here
 
-		// Add 'Problem' CPT with Area Taxonomy - Tags for boulders
-		// Add meta boxes for fields
+		// Add 'climb' CPT with Area Taxonomy - Tags for filtering
+		// Add ACF meta boxes for fields w/ conditionals for grades/other info
 		// Enable JSON API for post type - Custom endpoint with info
 
 		// Add Community Member user role
@@ -116,7 +119,7 @@ class Gaston {
 	 * Fired when the plugin is deactivated.
 	 *
 	 * @param    boolean    $network_wide    True if WPMU superadmin uses "Network Activate" action, false if WPMU is disabled or plugin is activated on an individual blog
-	 * @since    1.0.0
+	 * @since    0.0.2
 	 */
 	 public static function deactivate( $network_wide ) {
 		// TODO: Define deactivation functionality here
@@ -142,7 +145,7 @@ class Gaston {
 	/**
 	 * Registers and enqueues admin-specific styles.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.2
 	 */
 	public function register_admin_styles() {
 
@@ -170,7 +173,7 @@ class Gaston {
 	/**
 	 * Registers and enqueues admin-specific JavaScript.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.2
 	 */
 	public function register_admin_scripts() {
 
@@ -198,7 +201,7 @@ class Gaston {
 	/**
 	 * Registers and enqueues public-facing stylesheets.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.2
 	 */
 	public function register_plugin_styles() {
 		wp_enqueue_style( 'gaston-plugin-styles', plugins_url( 'css/display.css', __FILE__ ), GASTON_VERSION );
@@ -207,7 +210,7 @@ class Gaston {
 	/**
 	 * Registers and enqueues public-facing JavaScript.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.2
 	 */
 	public function register_plugin_scripts() {
 		wp_enqueue_script( 'gaston-plugin-script', plugins_url( 'js/display.js', __FILE__ ), array( 'jquery' ), GASTON_VERSION );
@@ -216,7 +219,7 @@ class Gaston {
 	/**
 	 * Registers the administration menu for this plugin into the WordPress Dashboard menu.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.2
 	 */
 	public function add_plugin_admin_menu() {
 
@@ -228,8 +231,8 @@ class Gaston {
 		 * Change 'gaston' to the name of your plugin
 		 */
 		$this->plugin_screen_slug = add_plugins_page(
-			__('Page Title', 'gaston-locale'),
-			__('Menu Text', 'gaston-locale'),
+			__('Gaston Settings', 'gaston-locale'),
+			__('Gaston Settings', 'gaston-locale'),
 			'read',
 			'gaston',
 			array( $this, 'display_plugin_admin_page' )
@@ -240,7 +243,7 @@ class Gaston {
 	/**
 	 * Renders the options page for this plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.2
 	 */
 	public function display_plugin_admin_page() {
 		include_once('views/admin.php');
@@ -253,7 +256,7 @@ class Gaston {
 	 *        WordPress Actions: http://codex.wordpress.org/Plugin_API#Actions
 	 *        Action Reference:  http://codex.wordpress.org/Plugin_API/Action_Reference
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.2
 	 */
 	public function action_method_name() {
 		// TODO: Define your action method here
@@ -266,7 +269,7 @@ class Gaston {
 	 *        WordPress Filters: http://codex.wordpress.org/Plugin_API#Filters
 	 *        Filter Reference:  http://codex.wordpress.org/Plugin_API/Filter_Reference
 	 *
-	 * @since       1.0.0
+	 * @since       0.0.2
 	 */
 	public function filter_method_name() {
 		// TODO: Define your filter method here
