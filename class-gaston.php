@@ -80,12 +80,75 @@ class Gaston {
 		 * add_action/add_filter calls are the hooks into which your code should fire.
 		 *
 		 */
-
+		add_action( 'init', array( $this, 'include_acf' ) );
 		add_action( 'init', array( $this, 'register_gaston_post_types' ) );
+		add_action( 'acf/init', array( $this, 'initialize_acf_config' ) );
 		add_action( 'rest_api_init', array( $this, 'initialize_rest_routes') );
 
 		// Add plugin admin menu
 		add_action('admin_menu', array( $this, 'add_plugin_admin_menu') );
+	}
+
+	public function include_acf() {
+
+		if ( !class_exists('acf') ) { // if ACF plugin does not currently exist
+
+			/** Start: Customize ACF path */
+			add_filter('acf/settings/path', 'gaston_acf_settings_path');
+			function gaston_acf_settings_path( $path ) {
+				$path = plugin_dir_path( __FILE__ ) . 'plugins/acf/';
+				return $path;
+			}
+			/** End: Customize ACF path */
+
+			/** Start: Customize ACF dir */
+			add_filter('acf/settings/dir', 'gaston_acf_settings_dir');
+			function gaston_acf_settings_dir( $path ) {
+				$path = plugin_dir_url( __FILE__ ) . 'plugins/acf/';
+				return $dir;
+			}
+			/** End: Customize ACF path */
+
+			/** Start: Hide ACF field group menu item */
+			add_filter('acf/settings/show_admin', '__return_false');
+			/** End: Hide ACF field group menu item */
+
+			/** Start: Include ACF */
+			include_once( plugin_dir_path( __FILE__ ) . 'plugins/acf/acf.php' );
+			/** End: Include ACF */
+
+			/** Start: Create JSON save point */
+			add_filter('acf/settings/save_json', 'gaston_acf_json_save_point');
+			function gaston_acf_json_save_point( $path ) {
+				$path = plugin_dir_path( __FILE__ ) . 'plugins/acf-json/';
+				return $path;
+			}
+			/** End: Create JSON save point */
+
+			/** Start: Create JSON load point */
+			add_filter('acf/settings/load_json', 'gaston_acf_json_load_point');
+			/** End: Create JSON load point */
+
+			/** Start: Stop ACF upgrade notifications */
+			add_filter( 'site_transient_update_plugins', 'gaston_stop_acf_update_notifications', 11 );
+			function gaston_stop_acf_update_notifications( $value ) {
+				unset( $value->response[ plugin_dir_path( __FILE__ ) . 'plugins/acf/acf.php' ] );
+				return $value;
+			}
+			/** End: Stop ACF upgrade notifications */
+		} else { // else ACF Pro plugin does exist
+			/** Start: Create JSON load point */
+			add_filter('acf/settings/load_json', 'gaston_acf_json_load_point');
+			/** End: Create JSON load point */
+		} // end-if ACF Pro plugin does not currently exist
+		/** End: Detect ACF Pro plugin. Include if not present. */
+
+		/** Start: Function to create JSON load point */
+		function gaston_acf_json_load_point( $paths ) {
+			$paths[] = plugin_dir_path( __FILE__ ) . 'plugins/acf-json-load';
+			return $paths;
+		}
+		/** End: Function to create JSON load point */
 	}
 
 	// include functions
@@ -93,6 +156,11 @@ class Gaston {
     include 'functions/custom-post-types.php';
     include 'functions/rest-api.php';
     include 'functions/register-taxonomy.php';
+	}
+
+	// include functions
+  public function initialize_acf_config() {
+    include 'functions/acf-config.php';
   }
 
 	public function initialize_rest_routes() {
